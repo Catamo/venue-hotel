@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  frontend:
+    build: venue-hotel-client/
+    command: yarn dev
+    ports:
+      - "3000:3000"
+    environment:
+      HOST: 0.0.0.0
+      SERVER_BASE_URL: http://localhost:4000/
+
+  server:
+    build: venue-hotel-api/
+    command: json-server --host 0.0.0.0 src/mock-generator.js
+    ports:
+      - "4000:3000"
+    environment:
+      PORT: 4000

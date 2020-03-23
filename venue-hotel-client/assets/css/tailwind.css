@@ -1,0 +1,26 @@
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* purgecss end ignore */
+@import 'tailwindcss/utilities';
+
+@import './tailwind-custom.css';
+
+@import './fonts/fonts.css';
+
+html {
+  font-family: 'San Francisco';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Graphik Semibold';
+}
+
+body {
+  background-color: #f2f2f6;
+}
