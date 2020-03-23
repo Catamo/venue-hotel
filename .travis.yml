@@ -1,0 +1,28 @@
+os: linux
+dist: trusty
+sudo: required
+
+language: node_js
+node_js:
+  - "8"
+services:
+  - docker
+
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo "$HEROKU_API_KEY" | docker login -u _ --password-stdin registry.heroku.com 
+
+install:
+- docker-compose build
+
+script: "true"
+
+deploy:
+  - provider: script
+    script: 
+      docker-compose push;
+      bash venue-hotel-api/deploy-heroku.sh;
+      bash venue-hotel-client/deploy-heroku.sh;
+    on:
+      branch: master
+    skip_cleanup: true
