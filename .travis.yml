@@ -9,8 +9,8 @@ services:
   - docker
 
 before_install:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - echo "$HEROKU_API_KEY" | docker login -u _ --password-stdin registry.heroku.com 
+  - echo "$DOCKER_PASSWORD" | docker login -u --username "$DOCKER_USERNAME" --password-stdin
+  - echo "$HEROKU_API_KEY" | docker login -u --username _ --password-stdin registry.heroku.com 
 
 install:
 - docker-compose build
