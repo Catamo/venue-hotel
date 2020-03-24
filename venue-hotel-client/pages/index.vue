@@ -29,7 +29,13 @@
           </h3>
           <hr class="border-gray-400" />
           <div class="px-2">
-            <hotels-results-container />
+            <client-only>
+              <hotels-results-container
+                :data="filteredHotelsList"
+                :no-data="noData"
+                :no-results="noResults"
+              />
+            </client-only>
           </div>
         </div>
       </div>
@@ -38,6 +44,9 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import { filterFunction } from '../utils/filterUtils'
+
 import HotelsResultsContainer from '../components/Hotels/HotelsResultsContainer'
 import HotelsResultsFilters from '../components/Hotels/HotelsResultsFiltersContainer'
 
@@ -45,6 +54,33 @@ export default {
   components: {
     HotelsResultsContainer,
     HotelsResultsFilters
+  },
+  async fetch() {
+    if (!this.hotelsList || this.hotelsList.length === 0) {
+      await this.$store.dispatch('hotels/getHotelsList')
+    }
+  },
+  fetchOnServer: false,
+  computed: {
+    ...mapState({
+      hotelsList: (state) => state.hotels.hotelsList,
+      hotelsListFilters: (state) => state.hotels.hotelsListFilters
+    }),
+
+    noData() {
+      return !this.hotelsList || this.hotelsList.length <= 0
+    },
+
+    noResults() {
+      return !this.filteredHotelsList || this.filteredHotelsList.length <= 0
+    },
+
+    filteredHotelsList() {
+      if (Array.isArray(this.hotelsList)) {
+        return this.hotelsList.filter(filterFunction(this.hotelsListFilters))
+      }
+      return []
+    }
   }
 }
 </script>

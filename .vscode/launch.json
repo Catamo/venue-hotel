@@ -1,0 +1,38 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "chrome",
+        "request": "launch",
+        "name": "client: chrome",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}/venue-hotel-client",
+        "cwd": "${workspaceFolder}/venue-hotel-client"
+      },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "server: nuxt",
+        "args": ["dev"],
+        "osx": {
+          "program": "${workspaceFolder}/venue-hotel-client/node_modules/.bin/nuxt"
+        },
+        "linux": {
+          "program": "${workspaceFolder}/venue-hotel-client/node_modules/.bin/nuxt"
+        },
+        "windows": {
+          "program": "${workspaceFolder}/venue-hotel-client/node_modules/nuxt/bin/nuxt.js"
+        },
+        "cwd": "${workspaceFolder}/venue-hotel-client"
+      }
+    ],
+    "compounds": [
+      {
+        "name": "fullstack: nuxt ",
+        "configurations": ["server: nuxt", "client: chrome"]
+      }
+    ]
+}

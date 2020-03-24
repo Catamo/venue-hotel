@@ -3,9 +3,9 @@
     <div class="flex p-6">
       <div class="w-3/4 pr-4">
         <div class="mt-1">
-          <router-link to="/" class="home-button w-40 mr-2">
+          <nuxt-link to="/" class="home-button w-40 mr-2">
             Go to Main Page
-          </router-link>
+          </nuxt-link>
         </div>
         <hr class="my-4" />
         <h2 class="text-xl w-full pl-2">Gallery</h2>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import RoomOptions from '../../components/Rooms/RoomOptionsContainer'
 import HotelImagesGallery from '../../components/Hotels/HotelImagesGallery'
 import HotelDetails from '../../components/Hotels/HotelDetails'
@@ -50,6 +50,10 @@ export default {
     HotelImagesGallery,
     HotelDetails
   },
+  async fetch() {
+    await this.$store.dispatch('hotels/getHotelById', this.$route.params.id)
+  },
+  fetchOnServer: false,
   data() {
     return {
       showAllRooms: false
@@ -72,14 +76,6 @@ export default {
 
       return returnList
     }
-  },
-  created() {
-    this.getHotelById(this.$route.params.id)
-  },
-  methods: {
-    ...mapActions({
-      getHotelById: 'hotels/getHotelById'
-    })
   }
 }
 </script>

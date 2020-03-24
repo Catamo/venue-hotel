@@ -1,5 +1,5 @@
 export default {
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Headers of the page
    */
@@ -13,8 +13,8 @@ export default {
         name: 'description',
         content: process.env.npm_package_description || ''
       }
-    ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    ]
+    // link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   /*
    ** Customize the progress-bar color
@@ -47,15 +47,15 @@ export default {
     '@nuxtjs/axios',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/component-cache',
-    '@nuxtjs/pwa'
+    '@nuxtjs/component-cache'
+    // '@nuxtjs/pwa'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: process.env.SERVER_BASE_URL
+    baseURL: process.env.SERVER_BASE_URL || 'http://localhost:4000'
   },
   /*
    ** Build configuration
@@ -64,6 +64,10 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? 'source-map' : 'inline-source-map'
+      }
+    }
   }
 }

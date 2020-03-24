@@ -61,6 +61,14 @@ export default {
       default: () => []
     }
   },
+  async fetch() {
+    if (this.objectIsEmpty(this.activeBooking)) {
+      await this.getBookingById(this.$route.params.id)
+    }
+    await this.getRoomById(this.activeBooking.roomId)
+    await this.getHotelById(this.selectedRoom.hotelId)
+  },
+  fetchOnServer: false,
   computed: {
     ...mapState({
       activeBooking: (state) => state.bookings.activeBooking,
@@ -71,13 +79,6 @@ export default {
     bookingConfirmed() {
       return this.activeBooking && this.activeBooking.confirmed
     }
-  },
-  async created() {
-    if (this.objectIsEmpty(this.activeBooking)) {
-      await this.getBookingById(this.$route.params.id)
-    }
-    await this.getRoomById(this.activeBooking.roomId)
-    await this.getHotelById(this.selectedRoom.hotelId)
   },
   methods: {
     ...mapActions({
@@ -98,8 +99,7 @@ export default {
     objectIsEmpty(obj) {
       return Object.keys(obj).length === 0 && obj.constructor === Object
     }
-  },
-  serverCacheKey: (props) => this.$route.params.id
+  }
 }
 </script>
 

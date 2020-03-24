@@ -4,18 +4,18 @@ services:
   frontend:
     image: catamo/venue-hotel-client
     build: venue-hotel-client/
-    command: yarn dev
+    command: yarn start
     ports:
       - "3000:3000"
     environment:
       HOST: 0.0.0.0
-      SERVER_BASE_URL: http://localhost:4000/
+      SERVER_BASE_URL: server
 
   server:
     image: catamo/venue-hotel-api
     build: venue-hotel-api/
-    command: json-server --host 0.0.0.0 src/mock-generator.js
+    command: json-server --host 0.0.0.0 --port 4000 src/mock-generator.js
     ports:
-      - "4000:3000"
+      - "4000:4000"
     environment:
       PORT: 4000

@@ -43,17 +43,17 @@ export default {
     FormNewHotel,
     TableHotels
   },
+  async fetch() {
+    await this.$store.dispatch('hotels/getHotelsList')
+  },
+  fetchOnServer: false,
   computed: {
     ...mapState({
       hotelsList: (state) => state.hotels.hotelsList
     })
   },
-  created() {
-    this.getHotelsList()
-  },
   methods: {
     ...mapActions({
-      getHotelsList: 'hotels/getHotelsList',
       postNewHotel: 'hotels/postNewHotel',
       deleteUpdateHotel: 'hotels/deleteUpdateHotel'
     }),
