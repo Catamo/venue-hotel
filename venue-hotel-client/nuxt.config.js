@@ -55,13 +55,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: process.env.SERVER_BASE_URL || 'http://localhost:4000'
+    baseURL: process.env.serverBaseUrl
   },
   /*
    ** Environment Variables Re-definition
    */
   env: {
-    SERVER_BASE_URL: process.env.SERVER_BASE_URL
+    serverBaseUrl: process.env.SERVER_BASE_URL || 'http://localhost:4000'
   },
   /*
    ** Server configuration
