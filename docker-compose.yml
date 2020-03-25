@@ -14,7 +14,7 @@ services:
   server:
     image: catamo/venue-hotel-api
     build: venue-hotel-api/
-    command: json-server --host 0.0.0.0 --port 4000 src/mock-generator.js
+    command: json-server --host 0.0.0.0 --port 4000 src/real-data.js
     ports:
       - "4000:4000"
     environment:
