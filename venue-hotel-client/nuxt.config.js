@@ -58,6 +58,13 @@ export default {
     baseURL: process.env.SERVER_BASE_URL || 'http://localhost:4000'
   },
   /*
+   ** Server configuration
+   */
+  server: {
+    port: process.env.PORT || 3000,
+    host: process.env.HOST || 'localhost'
+  },
+  /*
    ** Build configuration
    */
   build: {
