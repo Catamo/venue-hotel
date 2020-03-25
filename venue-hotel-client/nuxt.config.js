@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/route'],
+  plugins: ['~/plugins/route', '~/plugins/axios'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -54,14 +54,12 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {
-    baseURL: process.env.serverBaseUrl
-  },
+  axios: {},
   /*
    ** Environment Variables Re-definition
    */
   env: {
-    serverBaseUrl: process.env.SERVER_BASE_URL || 'http://localhost:4000'
+    apiUrl: process.env.API_URL
   },
   /*
    ** Server configuration
