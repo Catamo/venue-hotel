@@ -1,6 +1,3 @@
-console.log('PORT: ' + process.env.PORT)
-console.log('SERVER_BASE_URL: ' + process.env.SERVER_BASE_URL)
-
 export default {
   mode: 'universal',
   /*
@@ -58,7 +55,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: process.env.SERVER_BASE_URL || 'http://localhost:4000'
+    baseURL: process.env.NUXT_ENV_SERVER_BASE_URL || 'http://localhost:4000'
   },
   /*
    ** Server configuration
