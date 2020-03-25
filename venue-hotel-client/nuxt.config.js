@@ -1,3 +1,5 @@
+console.log('PORT: ' + process.env.PORT)
+
 export default {
   mode: 'universal',
   /*

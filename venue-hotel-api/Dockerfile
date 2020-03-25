@@ -9,4 +9,4 @@ COPY . .
 RUN npm install -g json-server
 RUN npm install
 
-CMD json-server --port $PORT src/real-data.js
+CMD json-server --host 0.0.0.0 --port $PORT src/real-data.js

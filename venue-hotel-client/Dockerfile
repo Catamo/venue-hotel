@@ -10,4 +10,4 @@ RUN yarn install
 
 RUN yarn build
 
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]
