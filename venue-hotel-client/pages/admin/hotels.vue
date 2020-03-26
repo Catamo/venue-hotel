@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import FormNewHotel from '../../components/Admin/FormNewHotel'
 import TableHotels from '../../components/Admin/TableHotels'
 
@@ -53,17 +53,12 @@ export default {
     })
   },
   methods: {
-    ...mapActions({
-      postNewHotel: 'hotels/postNewHotel',
-      deleteUpdateHotel: 'hotels/deleteUpdateHotel'
-    }),
-
     submitHandler(hotel) {
-      this.postNewHotel(hotel)
+      this.$store.dispatch('hotels/postNewHotel', hotel)
     },
 
     deleteClickedHandler(hotelId) {
-      this.deleteUpdateHotel(hotelId)
+      this.$store.dispatch('hotels/deleteUpdateHotel', hotelId)
     }
   }
 }

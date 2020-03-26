@@ -29,13 +29,17 @@
           </h3>
           <hr class="border-gray-400" />
           <div class="px-2">
-            <client-only>
+            <template v-if="$fetchState.pending">
+              <hotel-results-placeholder :items="8" />
+            </template>
+            <template v-else>
               <hotels-results-container
-                :data="filteredHotelsList"
+                v-if="hotelsList"
+                :data="hotelsList"
                 :no-data="noData"
                 :no-results="noResults"
               />
-            </client-only>
+            </template>
           </div>
         </div>
       </div>
@@ -49,16 +53,16 @@ import { filterFunction } from '../utils/filterUtils'
 
 import HotelsResultsContainer from '../components/Hotels/HotelsResultsContainer'
 import HotelsResultsFilters from '../components/Hotels/HotelsResultsFiltersContainer'
+import HotelResultsPlaceholder from '../components/Hotels/HotelResultsPlaceholder/Vertical'
 
 export default {
   components: {
     HotelsResultsContainer,
-    HotelsResultsFilters
+    HotelsResultsFilters,
+    HotelResultsPlaceholder
   },
   async fetch() {
-    if (!this.hotelsList || this.hotelsList.length === 0) {
-      await this.$store.dispatch('hotels/getHotelsList')
-    }
+    await this.$store.dispatch('hotels/getHotelsList')
   },
   fetchOnServer: false,
   computed: {

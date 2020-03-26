@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState } from 'vuex'
 import RoomOption from '../../components/Rooms/RoomOptionComponent'
 import HotelResult from '../../components/Hotels/HotelResultComponent/Horizontal'
 
@@ -62,11 +62,9 @@ export default {
     }
   },
   async fetch() {
-    if (this.objectIsEmpty(this.activeBooking)) {
-      await this.getBookingById(this.$route.params.id)
-    }
-    await this.getRoomById(this.activeBooking.roomId)
-    await this.getHotelById(this.selectedRoom.hotelId)
+    await this.$store.dispatch('bookings/getBookingById', this.$route.params.id)
+    await this.$store.dispatch('rooms/getRoomById', this.activeBooking.roomId)
+    await this.$store.dispatch('hotels/getHotelById', this.selectedRoom.hotelId)
   },
   fetchOnServer: false,
   computed: {
@@ -81,17 +79,10 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      getBookingById: 'bookings/getBookingById',
-      putEditBooking: 'bookings/putEditBooking',
-      getHotelById: 'hotels/getHotelById',
-      getRoomById: 'rooms/getRoomById'
-    }),
-
     confirmClickHandler() {
       if (this.bookingConfirmed) return
 
-      this.putEditBooking({
+      this.$store.dispatch('bookings/putEditBooking', {
         ...this.activeBooking,
         confirmed: true
       })

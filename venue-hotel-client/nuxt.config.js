@@ -27,7 +27,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/route', '~/plugins/axios'],
+  plugins: ['~/plugins/route', '~/plugins/vue-placeholders'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -54,12 +54,11 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
-  /*
-   ** Environment Variables Re-definition
-   */
-  env: {
-    apiUrl: process.env.API_URL
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': { target: process.env.SERVER_URL, pathRewrite: { '^/api/': '' } }
   },
   /*
    ** Server configuration

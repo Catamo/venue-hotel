@@ -3,14 +3,20 @@
     <template v-for="hotel in data">
       <hotel-result-item :key="hotel.id" :hotel="hotel" />
     </template>
-    <div v-if="noData" class="w-full px-3 h-40 flex items-center">
-      <h1 class="text-4xl text-center w-full">Hotels data not available :(</h1>
-    </div>
-    <div v-if="!noData && noResults" class="w-full px-3 h-40 flex items-center">
-      <h1 class="text-4xl text-center w-full">
-        No results for the selected filters
-      </h1>
-    </div>
+    <template v-if="noData">
+      <div class="w-full px-3 h-40 flex items-center">
+        <h1 class="text-4xl text-center w-full">
+          Hotels data not available :(
+        </h1>
+      </div>
+    </template>
+    <template v-else-if="noResults">
+      <div class="w-full px-3 h-40 flex items-center">
+        <h1 class="text-4xl text-center w-full">
+          No results for the selected filters
+        </h1>
+      </div>
+    </template>
   </div>
 </template>
 
