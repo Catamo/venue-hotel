@@ -48,8 +48,8 @@ export default {
     }
   },
   methods: {
-    getImageUrlAsStyle(url) {
-      return `background-image: url(${url})`
+    getImageUrlAsStyle(path) {
+      return `background-image: url(${process.env.imagesServerUrl}/${path})`
     },
     getNthImage(n) {
       const index = n - 1

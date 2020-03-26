@@ -60,6 +60,9 @@ export default {
   proxy: {
     '/api/': { target: process.env.SERVER_URL, pathRewrite: { '^/api/': '' } }
   },
+  env: {
+    imagesServerUrl: process.env.IMAGES_SERVER_URL
+  },
   /*
    ** Server configuration
    */
