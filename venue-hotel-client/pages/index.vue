@@ -35,7 +35,7 @@
             <template v-else>
               <hotels-results-container
                 v-if="hotelsList"
-                :data="hotelsList"
+                :data="filteredHotelsList"
                 :no-data="noData"
                 :no-results="noResults"
               />

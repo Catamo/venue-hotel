@@ -4,7 +4,9 @@ services:
   frontend:
     image: catamo/venue-hotel-client
     build: venue-hotel-client/
-    command: yarn start
+    command: yarn dev
+    volumes: 
+      - "./venue-hotel-client:/usr/src/app"
     ports:
       - "3000:5000"
     environment:
