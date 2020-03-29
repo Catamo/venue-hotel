@@ -1,6 +1,6 @@
 import Middleware from '@domain/middleware/middleware';
 import HotelsRoutesHandlers from './routes-handlers';
-import { PostRoute, GetRoute } from '@server/concrete-domain/route';
+import { PostRoute, GetRoute, DeleteRoute } from '@server/concrete-domain/route';
 import IHttpConfig from '@domain/http-methods/ihttp-config';
 
 class HotelsRoutes extends Middleware {
@@ -19,7 +19,8 @@ class HotelsRoutes extends Middleware {
         this.routesRegistry.registerRoutes(
             new PostRoute(this.path, this.routeHandlers.postHotel.bind(this.routeHandlers)),
             new GetRoute(this.path, this.routeHandlers.getAllHotels.bind(this.routeHandlers)),
-            new GetRoute(this.pathWithId, this.routeHandlers.getHotel.bind(this.routeHandlers))
+            new GetRoute(this.pathWithId, this.routeHandlers.getHotel.bind(this.routeHandlers)),
+            new DeleteRoute(this.pathWithId, this.routeHandlers.deleteHotel.bind(this.routeHandlers))
         );
     }
 };

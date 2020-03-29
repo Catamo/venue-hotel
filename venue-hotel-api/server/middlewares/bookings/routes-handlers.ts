@@ -14,7 +14,7 @@ class BookingsRoutesHandlers extends HttpMethodsClient {
   }
 
   async postBooking(req: any, res: any) {
-    const booking = req.response;
+    const booking = req.body;
 
     await this.post(`/api/bookings/`, booking);
     res.status(200);
@@ -23,7 +23,7 @@ class BookingsRoutesHandlers extends HttpMethodsClient {
 
   async putBooking(req: any, res: any) {
     const bookingId = req.params.id;
-    const booking = req.response;
+    const booking = req.body;
 
     await this.put(`/api/bookings/${bookingId}`, booking);
     res.status(200);

@@ -1,5 +1,12 @@
 module.exports = {
-  bookings: [{ id: 'mock' }],
+  bookings: [
+    {
+      id: "43c27031-329f-4b0e-9098-b396079ebb59",
+      bookingNumber: new Date().valueOf(),
+      roomId: "ef3be69d-1402-4024-937a-2bdb645116ac",
+      confirmed: false
+    }
+  ],
   hotels: [
     {
       id: "c09bfc6a-6ee8-4279-b0fd-31b47b17bfb2",
