@@ -4,9 +4,11 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
-COPY . .
+COPY package.json package.json
 
 RUN yarn install
+
+COPY . .
 
 RUN yarn build
 

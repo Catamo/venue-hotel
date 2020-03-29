@@ -54,7 +54,7 @@ export default {
     getHotelPhotoAsStyle(hotel) {
       if (!hotel || !hotel.images || hotel.images.length === 0) return ''
 
-      return `background-image:url(${process.env.imagesServerUrl}/${hotel.images[0]});`
+      return `background-image:url(${hotel.images[0]});`
     },
     getPriceRangeSign(priceCategory) {
       switch (priceCategory) {

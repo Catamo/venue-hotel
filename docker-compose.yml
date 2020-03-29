@@ -4,16 +4,13 @@ services:
   frontend:
     image: catamo/venue-hotel-client
     build: venue-hotel-client/
-    command: yarn dev
-    volumes: 
-      - "./venue-hotel-client:/usr/src/app"
+    command: yarn start
     ports:
       - "3000:5000"
     environment:
       PORT: 5000
       HOST: 0.0.0.0
       SERVER_URL: http://172.25.0.10:4000
-      IMAGES_SERVER_URL: http://localhost:4000/assets
       NODE_ENV: production
     networks:
       appnet:
@@ -22,11 +19,12 @@ services:
   server:
     image: catamo/venue-hotel-api
     build: venue-hotel-api/
-    command: json-server --host 0.0.0.0 --port 4000 src/real-data.js
+    command: yarn start
     ports:
       - "4000:4000"
     environment:
       PORT: 4000
+      IMAGES_SERVER_URL: http://localhost:4000/static
     networks:
       appnet:
         ipv4_address: 172.25.0.10

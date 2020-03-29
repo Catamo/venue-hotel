@@ -5,15 +5,15 @@ const HOTEL_IMAGES = [];
 const ROOM_IMAGES = [];
 
 //get images
-const hotelsPath = path.join(__dirname, "../public/assets/hotels-pics/");
-const roomsPath = path.join(__dirname, "../public/assets/rooms-pics/");
+const hotelsPath = path.join(__dirname, "./assets/hotels-pics/");
+const roomsPath = path.join(__dirname, "./assets/rooms-pics/");
 
 fs.readdirSync(hotelsPath).forEach((file) => {
-  HOTEL_IMAGES.push(`$/hotels-pics/${file}`);
+  HOTEL_IMAGES.push(`hotels-pics/${file}`);
 });
 
 fs.readdirSync(roomsPath).forEach((file) =>{
-  ROOM_IMAGES.push(`/rooms-pics/${file}`);
+  ROOM_IMAGES.push(`rooms-pics/${file}`);
 });
 //get images end
 

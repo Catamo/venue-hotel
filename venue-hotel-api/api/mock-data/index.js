@@ -1,5 +1,5 @@
 const faker = require("faker");
-const { PRICE_CATEGORIES, AMENITIES } = require("./constant-data");
+const { PRICE_CATEGORIES, AMENITIES } = require("./constants");
 const { HOTEL_IMAGES, ROOM_IMAGES } = require("./images-data");
 
 function generateHotels() {
@@ -50,4 +50,4 @@ function generateHotels() {
   }
 }
 
-module.exports = generateHotels;
+module.exports = generateHotels();

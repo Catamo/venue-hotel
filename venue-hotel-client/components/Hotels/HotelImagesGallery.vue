@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     getImageUrlAsStyle(path) {
-      return `background-image: url(${process.env.imagesServerUrl}/${path})`
+      return `background-image: url(${path})`
     },
     getNthImage(n) {
       const index = n - 1

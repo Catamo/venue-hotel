@@ -1,4 +1,5 @@
 module.exports = {
+  bookings: [{ id: 'mock' }],
   hotels: [
     {
       id: "c09bfc6a-6ee8-4279-b0fd-31b47b17bfb2",

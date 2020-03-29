@@ -4,9 +4,12 @@ RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
+COPY package.json package.json
+
+RUN yarn install
+
 COPY . .
 
-RUN npm install -g json-server
-RUN npm install
+RUN yarn build
 
-CMD json-server --host 0.0.0.0 --port $PORT src/real-data.js
+CMD yarn start
