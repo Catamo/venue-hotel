@@ -1,7 +1,7 @@
-@import url(//db.onlinewebfonts.com/c/2aa5f6db10ab7b69465c95555c235503?family=Graphik+Semibold);
+@import url(http://db.onlinewebfonts.com/c/2aa5f6db10ab7b69465c95555c235503?family=Graphik+Semibold);
 
 @font-face {
   font-family: "San Francisco";
   font-weight: 400;
-  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
+  src: url("http://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff");
 }
